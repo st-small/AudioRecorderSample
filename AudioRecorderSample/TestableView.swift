@@ -1,57 +1,44 @@
-import ComposableArchitecture
 import AVFAudio
+import ConcurrencyExtras
+import Dependencies
+import SwiftUI
 
-struct AudioRecorderClient {
-    var currentTime: @Sendable () async -> TimeInterval?
-    var requestRecordPermission: @Sendable () async -> Bool = { false }
-    var startRecording: @Sendable (_ url: URL) async throws -> Bool
-    var stopRecording: @Sendable () async -> Void
-}
-
-extension AudioRecorderClient: DependencyKey {
-    static var liveValue: Self {
-        let audioRecorder = AudioRecorderActor()
-        return Self(
-            currentTime: { audioRecorder.currentTime },
-            requestRecordPermission: { await AudioRecorderActor.requestPermission() },
-            startRecording: { url in try await audioRecorder.start(url: url) },
-            stopRecording: { audioRecorder.stop() }
-        )
+struct TestableView: View {
+    
+    @Dependency(\.uuid) var uuid
+    @Dependency(\.temporaryDirectory) var temporaryDirectory
+    
+    @State private var isRecording = false
+    private let audioRecorder = AudioRecorderActor2()
+    
+    var body: some View {
+        Button(isRecording ? "Stop recording" : "Start") {
+            print("<<< 7. Button tapped \(Date.now)")
+            if isRecording {
+                audioRecorder.stop()
+            } else {
+                Task {
+                    try? await audioRecorder.start(url: newURL)
+                }
+            }
+            
+            isRecording.toggle()
+        }
     }
     
-    static var previewValue: Self {
-        let isRecording = ActorIsolated(false)
-        let currentTime = ActorIsolated(0.0)
-        
-        return Self(
-            currentTime: { await currentTime.value },
-            requestRecordPermission: { true },
-            startRecording: { _ in
-                await isRecording.setValue(true)
-                while await isRecording.value {
-                    try await Task.sleep(for: .seconds(1))
-                    await currentTime.withValue { $0 += 1 }
-                }
-                
-                return true
-            },
-            stopRecording: { 
-                await isRecording.setValue(false)
-                await currentTime.setValue(0)
-            }
-        )
+    private var newURL: URL {
+        temporaryDirectory()
+            .appendingPathComponent(uuid().uuidString)
+            .appendingPathExtension("m4a")
     }
 }
 
-extension DependencyValues {
-    var audioRecorder: AudioRecorderClient {
-        get { self[AudioRecorderClient.self] }
-        set { self[AudioRecorderClient.self] = newValue }
-    }
+#Preview {
+    TestableView()
 }
 
-private final class AudioRecorderActor {
-    var delegate: Delegate?
+final class AudioRecorderActor2 {
+    var delegate: Delegate2?
     var recorder: AVAudioRecorder?
     
     var currentTime: TimeInterval? {
@@ -74,16 +61,14 @@ private final class AudioRecorderActor {
         print("<<< 1. before stream \(Date.now)")
         let stream = AsyncThrowingStream<Bool, Error> { continuation in
             do {
-                delegate = Delegate(
+                delegate = Delegate2(
                     didFinishRecording: { flag in
                         print("<<< 2a. didFinishRecording \(Date.now)")
                         continuation.yield(flag)
                         print("<<< 2b. didFinishRecording \(Date.now)")
                         continuation.finish()
                         print("<<< 2c. didFinishRecording \(Date.now)")
-                        Task {
-                            try? AVAudioSession.sharedInstance().setActive(false)
-                        }
+                        try? AVAudioSession.sharedInstance().setActive(false)
                         print("<<< 2d. didFinishRecording \(Date.now)")
                     },
                     encodeErrorDidOccur: { error in
@@ -127,7 +112,7 @@ private final class AudioRecorderActor {
     }
 }
 
-private final class Delegate: NSObject, AVAudioRecorderDelegate, Sendable {
+final class Delegate2: NSObject, AVAudioRecorderDelegate, Sendable {
     let didFinishRecording: @Sendable (Bool) -> Void
     let encodeErrorDidOccur: @Sendable (Error?) -> Void
     

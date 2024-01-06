@@ -83,9 +83,44 @@ struct AudioRecordView: View {
     let store: StoreOf<AudioRecord>
     
     var body: some View {
-        Text("\(store.state.duration)")
-            .task {
-                await store.send(.onTask).finish()
+        HStack(spacing: 5) {
+            Circle()
+                .fill(.red)
+                .frame(width: 12)
+            
+            if let formattedDuration = dateComponentsFormatter.string(from: store.state.duration) {
+              Text(formattedDuration)
+                    .font(.system(size: 14, weight: .regular).monospacedDigit())
+                .foregroundColor(.black)
             }
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+        .overlay {
+            Text("Cancellation")
+                .opacity(0.5)
+        }
+        .task {
+            await store.send(.onTask).finish()
+        }
     }
+}
+
+#Preview {
+    @Dependency(\.temporaryDirectory) var temp
+    
+    return AudioRecordView(
+        store: .init(
+            initialState: AudioRecord.State(
+                date: .now,
+                url: temp()
+                    .appendingPathComponent(UUID().uuidString)
+                    .appendingPathExtension("m4a")
+            ),
+            reducer: {
+                AudioRecord()
+            }
+        )
+    )
 }
