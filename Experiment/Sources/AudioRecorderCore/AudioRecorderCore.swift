@@ -79,7 +79,7 @@ public struct AudioRecorderCore {
                 state.recordingAudio = nil
                 state.duration = 0
                 return .run { send in
-                    await audioRecorder.stopRecord(false)
+                    await audioRecorder.stopRecord()
                 }
             case .recordPermissionResponse(let isAllowed):
                 state.audioRecordPermission = isAllowed ? .allowed : .denied
@@ -129,7 +129,9 @@ public struct AudioRecorderCore {
                 /// 1. Остановить запись звука
                 /// 2. Вернуть начальное состояние без к.-л. изменений
                 /// просто отмена записи, для пользователя ничего не произошло
-                return .none
+                print("<<< try to cancel...")
+                state.duration = 0
+                return .cancel(id: TimerID.timer)
             }
         }
     }

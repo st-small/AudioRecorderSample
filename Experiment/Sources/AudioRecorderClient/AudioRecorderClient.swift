@@ -4,7 +4,7 @@ import ComposableArchitecture
 public struct AudioRecorderClient {
     public var permissions: @Sendable () async -> Bool
     public var startRecord: @Sendable (URL) async -> AsyncStream<Action>
-    public var stopRecord: @Sendable (Bool) async -> Void
+    public var stopRecord: @Sendable () async -> Void
     
     public enum Action { 
         case recordingComplete(duration: TimeInterval, url: URL)
@@ -25,7 +25,7 @@ extension AudioRecorderClient: DependencyKey {
         return .init(
             permissions: { await AVAudioApplication.requestRecordPermission() },
             startRecord: { await actor.start($0) },
-            stopRecord: { await actor.stop($0) }
+            stopRecord: { await actor.stop() }
         )
     }
     
@@ -33,7 +33,7 @@ extension AudioRecorderClient: DependencyKey {
         .init(
             permissions: { false },
             startRecord: { _ in return .never },
-            stopRecord: { _ in }
+            stopRecord: { }
         )
     }
 }
@@ -59,8 +59,8 @@ extension AudioRecorderClient {
             }
         }
         
-        func stop(_ force: Bool) async {
-            await recorder?.stop(force)
+        func stop() async {
+            await recorder?.stop()
         }
     }
 }
@@ -109,15 +109,11 @@ public final class AudioRecorder: NSObject, AVAudioRecorderDelegate {
         }
     }
     
-    public func stop(_ force: Bool = false) async {
+    public func stop() async {
         let duration = audioRecorder.currentTime
         let url = audioRecorder.url
         
-        if force {
-            await finishRecording(.failure(AudioRecorderError.forceFinish))
-        } else {
-            await finishRecording(.success((duration, url)))
-        }
+        await finishRecording(.success((duration, url)))
     }
     
     private func finishRecording(_ result: Result<(TimeInterval, URL), Error>) async {
