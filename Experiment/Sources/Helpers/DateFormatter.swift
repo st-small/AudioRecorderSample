@@ -1,6 +1,6 @@
 import Foundation
 
-let dateComponentsFormatter: DateComponentsFormatter = {
+public let dateComponentsFormatter: DateComponentsFormatter = {
   let formatter = DateComponentsFormatter()
     formatter.allowedUnits = [.hour, .minute, .second]
   formatter.zeroFormattingBehavior = .pad

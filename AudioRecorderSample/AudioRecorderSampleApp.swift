@@ -1,3 +1,7 @@
+import AudioRecorderCore
+import AudioRecorderView
+import NumbersCore
+import NumbersView
 import Dependencies
 import SwiftUI
 
@@ -8,17 +12,27 @@ struct AudioRecorderSampleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(
-                store: .init(
-                    initialState: AudioRecorder.State(),
-                    reducer: {
-                        AudioRecorder()
-//                            ._printChanges()
+            NavigationStack {
+                Form {
+                    NavigationLink("Numbers stream") {
+                        NumbersView(
+                            store: .init(
+                                initialState: NumbersCore.State(),
+                                reducer: { NumbersCore() }
+                            )
+                        )
                     }
-                )
-            )
-            .onAppear {
-                print(directory())
+                    
+                    NavigationLink("Audio recorder") { 
+                        AudioRecorderView(
+                            store: .init(
+                                initialState: AudioRecorderCore.State(),
+                                reducer: { AudioRecorderCore() }
+                            )
+                        )
+                    }
+                }
+                .navigationTitle("Cases")
             }
         }
     }

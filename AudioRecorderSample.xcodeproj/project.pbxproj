@@ -3,35 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		529D3D8C2B416BF600F8F4A1 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 529D3D8B2B416BF600F8F4A1 /* ComposableArchitecture */; };
-		529D3D8E2B4184AE00F8F4A1 /* AudioRecorderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D3D8D2B4184AE00F8F4A1 /* AudioRecorderClient.swift */; };
-		529D3D902B4452DB00F8F4A1 /* OpenSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D3D8F2B4452DB00F8F4A1 /* OpenSettings.swift */; };
-		529D3D922B4566AE00F8F4A1 /* AudioRecorderFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D3D912B4566AE00F8F4A1 /* AudioRecorderFeature.swift */; };
-		529D3D942B45673500F8F4A1 /* AudioRecordFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D3D932B45673500F8F4A1 /* AudioRecordFeature.swift */; };
-		529D3D962B4573BE00F8F4A1 /* TemporaryDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D3D952B4573BE00F8F4A1 /* TemporaryDirectory.swift */; };
-		52B06C092B4710C100601321 /* TestableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B06C082B4710C100601321 /* TestableView.swift */; };
-		52B06C0B2B48293D00601321 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B06C0A2B48293D00601321 /* Helpers.swift */; };
+		524169892B5E915000CF381A /* NumbersView in Frameworks */ = {isa = PBXBuildFile; productRef = 524169882B5E915000CF381A /* NumbersView */; };
+		52AA72E82B5EF3D900904A84 /* AudioRecorderView in Frameworks */ = {isa = PBXBuildFile; productRef = 52AA72E72B5EF3D900904A84 /* AudioRecorderView */; };
 		52D6AA912B415E7600352CC4 /* AudioRecorderSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6AA902B415E7600352CC4 /* AudioRecorderSampleApp.swift */; };
-		52D6AA932B415E7600352CC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6AA922B415E7600352CC4 /* ContentView.swift */; };
 		52D6AA952B415E7700352CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D6AA942B415E7700352CC4 /* Assets.xcassets */; };
 		52D6AA982B415E7700352CC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D6AA972B415E7700352CC4 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		529D3D8D2B4184AE00F8F4A1 /* AudioRecorderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderClient.swift; sourceTree = "<group>"; };
-		529D3D8F2B4452DB00F8F4A1 /* OpenSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSettings.swift; sourceTree = "<group>"; };
-		529D3D912B4566AE00F8F4A1 /* AudioRecorderFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderFeature.swift; sourceTree = "<group>"; };
-		529D3D932B45673500F8F4A1 /* AudioRecordFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordFeature.swift; sourceTree = "<group>"; };
-		529D3D952B4573BE00F8F4A1 /* TemporaryDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryDirectory.swift; sourceTree = "<group>"; };
-		52B06C082B4710C100601321 /* TestableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableView.swift; sourceTree = "<group>"; };
-		52B06C0A2B48293D00601321 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		525FFE662B5927990000AC86 /* Experiment */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Experiment; sourceTree = "<group>"; };
+		525FFE672B5928240000AC86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		52D6AA8D2B415E7600352CC4 /* AudioRecorderSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorderSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6AA902B415E7600352CC4 /* AudioRecorderSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderSampleApp.swift; sourceTree = "<group>"; };
-		52D6AA922B415E7600352CC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		52D6AA942B415E7700352CC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52D6AA972B415E7700352CC4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,7 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529D3D8C2B416BF600F8F4A1 /* ComposableArchitecture in Frameworks */,
+				52AA72E82B5EF3D900904A84 /* AudioRecorderView in Frameworks */,
+				524169892B5E915000CF381A /* NumbersView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +46,7 @@
 		52D6AA842B415E7600352CC4 = {
 			isa = PBXGroup;
 			children = (
+				525FFE662B5927990000AC86 /* Experiment */,
 				52D6AA8F2B415E7600352CC4 /* AudioRecorderSample */,
 				52D6AA8E2B415E7600352CC4 /* Products */,
 				529D3D8A2B416BF500F8F4A1 /* Frameworks */,
@@ -75,15 +64,8 @@
 		52D6AA8F2B415E7600352CC4 /* AudioRecorderSample */ = {
 			isa = PBXGroup;
 			children = (
+				525FFE672B5928240000AC86 /* Info.plist */,
 				52D6AA902B415E7600352CC4 /* AudioRecorderSampleApp.swift */,
-				52D6AA922B415E7600352CC4 /* ContentView.swift */,
-				529D3D932B45673500F8F4A1 /* AudioRecordFeature.swift */,
-				52B06C0A2B48293D00601321 /* Helpers.swift */,
-				529D3D912B4566AE00F8F4A1 /* AudioRecorderFeature.swift */,
-				529D3D8D2B4184AE00F8F4A1 /* AudioRecorderClient.swift */,
-				529D3D8F2B4452DB00F8F4A1 /* OpenSettings.swift */,
-				529D3D952B4573BE00F8F4A1 /* TemporaryDirectory.swift */,
-				52B06C082B4710C100601321 /* TestableView.swift */,
 				52D6AA942B415E7700352CC4 /* Assets.xcassets */,
 				52D6AA962B415E7700352CC4 /* Preview Content */,
 			);
@@ -115,7 +97,8 @@
 			);
 			name = AudioRecorderSample;
 			packageProductDependencies = (
-				529D3D8B2B416BF600F8F4A1 /* ComposableArchitecture */,
+				524169882B5E915000CF381A /* NumbersView */,
+				52AA72E72B5EF3D900904A84 /* AudioRecorderView */,
 			);
 			productName = AudioRecorderSample;
 			productReference = 52D6AA8D2B415E7600352CC4 /* AudioRecorderSample.app */;
@@ -146,7 +129,7 @@
 			);
 			mainGroup = 52D6AA842B415E7600352CC4;
 			packageReferences = (
-				52D6AA9E2B415FAD00352CC4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				525FFE682B5928CA0000AC86 /* XCLocalSwiftPackageReference "Experiment" */,
 			);
 			productRefGroup = 52D6AA8E2B415E7600352CC4 /* Products */;
 			projectDirPath = "";
@@ -174,14 +157,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529D3D922B4566AE00F8F4A1 /* AudioRecorderFeature.swift in Sources */,
-				529D3D962B4573BE00F8F4A1 /* TemporaryDirectory.swift in Sources */,
-				529D3D902B4452DB00F8F4A1 /* OpenSettings.swift in Sources */,
-				529D3D8E2B4184AE00F8F4A1 /* AudioRecorderClient.swift in Sources */,
-				52B06C0B2B48293D00601321 /* Helpers.swift in Sources */,
-				52B06C092B4710C100601321 /* TestableView.swift in Sources */,
-				52D6AA932B415E7600352CC4 /* ContentView.swift in Sources */,
-				529D3D942B45673500F8F4A1 /* AudioRecordFeature.swift in Sources */,
 				52D6AA912B415E7600352CC4 /* AudioRecorderSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +294,7 @@
 				DEVELOPMENT_TEAM = 3PTYV272Z4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioRecorderSample/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Your microphone will be used to record your speech when you press the \"Start Recording\" button.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -350,6 +326,7 @@
 				DEVELOPMENT_TEAM = 3PTYV272Z4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioRecorderSample/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Your microphone will be used to record your speech when you press the \"Start Recording\" button.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -393,22 +370,21 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		52D6AA9E2B415FAD00352CC4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
-			requirement = {
-				branch = "observation-pt3";
-				kind = branch;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		525FFE682B5928CA0000AC86 /* XCLocalSwiftPackageReference "Experiment" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Experiment;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		529D3D8B2B416BF600F8F4A1 /* ComposableArchitecture */ = {
+		524169882B5E915000CF381A /* NumbersView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 52D6AA9E2B415FAD00352CC4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
+			productName = NumbersView;
+		};
+		52AA72E72B5EF3D900904A84 /* AudioRecorderView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AudioRecorderView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

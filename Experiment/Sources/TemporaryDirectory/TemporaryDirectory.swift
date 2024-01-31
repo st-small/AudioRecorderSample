@@ -1,8 +1,8 @@
-import Dependencies
+import ComposableArchitecture
 import Foundation
 
 extension DependencyValues {
-    var temporaryDirectory: @Sendable () -> URL {
+    public var temporaryDirectory: @Sendable () -> URL {
         get { self[TemporaryDirectoryKey.self] }
         set { self[TemporaryDirectoryKey.self] = newValue }
     }
@@ -11,3 +11,4 @@ extension DependencyValues {
         static var liveValue: @Sendable () -> URL = { URL(fileURLWithPath: NSTemporaryDirectory()) }
     }
 }
+

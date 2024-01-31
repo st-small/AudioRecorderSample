@@ -1,73 +1,6 @@
+import AudioRecorderCore
 import ComposableArchitecture
 import SwiftUI
-
-struct ContentView: View {
-    let store: StoreOf<AudioRecorder>
-    
-    @State private var geoProxySize: CGSize = .zero
-    @State private var recordButtonPosition: CGSize = .zero
-    
-    var body: some View {
-        GeometryReader { geo in
-            VStack {
-                Spacer()
-                
-                ZStack {
-                    Rectangle()
-                        .fill(.gray.opacity(0.5))
-                        .frame(width: geo.size.width, height: 48)
-                    
-                    if let recording = store.scope(state: \.recordingAudio, action: \.recordingAudio) {
-                        AudioRecordView(store: recording)
-                    }
-                    
-                    recordButton
-                    .alert(store: store.scope(state: \.$alert, action: \.alert))
-                }
-                .overlay {
-                    HStack {
-                        Spacer()
-                        
-                        if store.recordingAudio != nil {
-                            Capsule()
-                                .fill(.purple)
-                                .frame(width: 36, height: 61)
-                                .offset(y: -72)
-                        }
-                    }
-                    .padding(.horizontal, 6)
-                }
-            }
-            .onAppear {
-                geoProxySize = geo.size
-                recordButtonPosition = CGSize(width: geoProxySize.width / 2 - 22, height: 0)
-            }
-        }
-    }
-    
-    private var recordButton: some View {
-        RecordAudioButton(
-            store: store,
-            viewState: $recordButtonPosition,
-            magicOffsetFirst: topHelperCircleOffset,
-            magicOffsetSecond: leadingHelperCircleOffset
-        )
-    }
-    
-    private var topHelperCircleOffset: OffsetModel {
-        .init(id: UUID(), width: geoProxySize.width / 2 - 22, height: -81)
-    }
-    
-    private var leadingHelperCircleOffset: OffsetModel {
-        .init(id: UUID(), width: 0, height: 0)
-    }
-}
-
-struct OffsetModel {
-    let id: UUID
-    let width: CGFloat
-    let height: CGFloat
-}
 
 struct RecordAudioButton: View {
     enum DragState: Equatable {
@@ -103,7 +36,7 @@ struct RecordAudioButton: View {
         }
     }
     
-    let store: StoreOf<AudioRecorder>
+    let store: StoreOf<AudioRecorderCore>
     
     @Binding var viewState: CGSize
     let magicOffsetFirst: OffsetModel
@@ -121,7 +54,7 @@ struct RecordAudioButton: View {
                 /// Long press begins
                 case .first(true):
                     state = .pressing
-                    store.send(.recordButtonTapped)
+                    store.send(.startRecordTapped)
                     
                 /// Long press confirmed, dragging may begin
                 case .second(true, let drag):
@@ -145,11 +78,11 @@ struct RecordAudioButton: View {
                 ) {
                     switch id {
                     case magicOffsetFirst.id:
+                        print("<<< onLock")
 //                        onTrash()
                         break
                     case magicOffsetSecond.id:
-//                        onLock()
-                        break
+                        store.send(.cancelRecord)
                     default:
                         break
                     }
@@ -197,9 +130,9 @@ struct RecordAudioButton: View {
                 .offset(y: -200)
             }
             .onChange(of: $dragState.wrappedValue) { oldValue, newValue in
-                print("<<< newValue \(newValue)")
+//                print("<<< newValue \(newValue)")
                 guard newValue == .inactive else { return }
-                store.send(.recordButtonReleased)
+                store.send(.stopRecordTapped)
             }
     }
     
@@ -236,15 +169,4 @@ struct RecordAudioButton: View {
         return results.sorted(by: { $0.key < $1.key })
             .first?.value.first?.id
     }
-}
-
-#Preview {
-    ContentView(
-        store: .init(
-            initialState: AudioRecorder.State(),
-            reducer: {
-                AudioRecorder()
-            }
-        )
-    )
 }

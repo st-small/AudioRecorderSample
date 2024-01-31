@@ -3,4 +3,69 @@
    uuid = "B4163707-A32A-4EE0-AAD8-3B6BB4DA9B75"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3952F09C-A1B2-4388-932E-29E529F11D07"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Experiment/Sources/AudioRecorderClient/AudioRecorderClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "audioRecorderDidFinishRecording(_:successfully:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3952F09C-A1B2-4388-932E-29E529F11D07 - ce37399b3df2212a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in AudioRecorderClient.AudioRecorder.audioRecorderDidFinishRecording(_: __C.AVAudioRecorder, successfully: Swift.Bool) -&gt; ()"
+                  moduleName = "AudioRecorderSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stanlyshiyanovskiy/Developer/AudioRecorderSample/Experiment/Sources/AudioRecorderClient/AudioRecorderClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "3952F09C-A1B2-4388-932E-29E529F11D07 - 2e35b38ab3c60ca8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in AudioRecorderClient.AudioRecorder.audioRecorderDidFinishRecording(_: __C.AVAudioRecorder, successfully: Swift.Bool) -&gt; ()"
+                  moduleName = "AudioRecorderSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stanlyshiyanovskiy/Developer/AudioRecorderSample/Experiment/Sources/AudioRecorderClient/AudioRecorderClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "3952F09C-A1B2-4388-932E-29E529F11D07 - 78f21818bced6728"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in AudioRecorderClient.AudioRecorder.audioRecorderDidFinishRecording(_: __C.AVAudioRecorder, successfully: Swift.Bool) -&gt; ()"
+                  moduleName = "AudioRecorderSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stanlyshiyanovskiy/Developer/AudioRecorderSample/Experiment/Sources/AudioRecorderClient/AudioRecorderClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
